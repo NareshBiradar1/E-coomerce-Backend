@@ -19,6 +19,16 @@ public class GlobalExceptionHandler {
         return responseEntity;
     }
 
+    @ExceptionHandler(ArrayIndexOutOfBoundsException.class)
+    public ResponseEntity<ExceptionDto> handleArrayIndexOutOfBoundsException() {
+        ExceptionDto dto = new ExceptionDto();
+        dto.setMessage("Something went wrong");
+        dto.setResolution("ArrayIndexOutOfBoundsException");
+        ResponseEntity<ExceptionDto> response = new ResponseEntity<>(dto, HttpStatus.BAD_REQUEST);
+        return response;
+    }
+
+
     @ExceptionHandler(ProductNotFoundException.class)
     public ResponseEntity<ExceptionDto> handleProductNotFoundException(ProductNotFoundException productNotFoundException){
         ExceptionDto newException = new ExceptionDto();

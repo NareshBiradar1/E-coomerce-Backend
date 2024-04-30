@@ -2,10 +2,7 @@ package com.scaler.apr2.Controllers;
 
 import com.scaler.apr2.Models.Product;
 import com.scaler.apr2.Services.ProductService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -28,6 +25,11 @@ public class ProductController {
     @GetMapping("/{id}")
     public Product getProductByID(@PathVariable("id") Long id){
         return productService.getSingleProduct(id);
+    }
+
+    @PostMapping
+    public Product createProduct(@RequestBody Product product) {
+        return productService.createProduct(product);
     }
 
 }
